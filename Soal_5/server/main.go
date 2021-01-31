@@ -41,7 +41,7 @@ func Logger() gin.HandlerFunc {
 		var counter = new(Body)
 		c.ShouldBind(counter)
 		headerData := c.Request.Header.Get("X-RANDOM")
-		data := fmt.Sprintf("[%s] Success: POST %s {\"Counter\": \"%d\", \"X-RANDOM\": \"%s\"}", t.Format(time.RFC3339), ipAddr, counter.Counter, headerData)
+		data := fmt.Sprintf("[%s] Success: POST http://%s {\"Counter\": \"%d\", \"X-RANDOM\": \"%s\"}", t.Format(time.RFC3339), ipAddr, counter.Counter, headerData)
 		WriteFile(data, c)
 	}
 }
